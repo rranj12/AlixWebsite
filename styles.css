@@ -1,0 +1,383 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    zoom: 0.9; /* Scale entire page to 90% */
+}
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Remove underlines from all links by default */
+a {
+    text-decoration: none;
+}
+
+/* Header Bar - Separate from content (like Novana) */
+.header-bar {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background: #0038f0; /* Blue background to match gradient start */
+    z-index: 100;
+}
+
+.desktop {
+    background: linear-gradient(to bottom, #0038f0 0%, #ffffff 100%);
+    position: relative;
+    width: 100%;
+    min-height: 150vh; /* Increased to accommodate lower spotlight boxes */
+    padding-bottom: 200px;
+    overflow: hidden;
+    margin-top: 0; /* Start right after header */
+}
+
+/* Scientific Background Overlay - Canvas */
+.scientific-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    display: block;
+}
+
+/* Logo */
+.logo {
+    position: absolute;
+    z-index: 101;
+    font-family: 'Instrument Serif', serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: normal;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5px;
+    width: 136px;
+    height: 89px;
+    color: white;
+    text-align: center;
+    white-space: pre-wrap;
+    margin: 0;
+    text-decoration: none !important;
+    display: block;
+    transition: opacity 0.3s ease;
+    border: none;
+    outline: none;
+}
+
+.logo:hover,
+.logo:visited,
+.logo:focus,
+.logo:active {
+    text-decoration: none !important;
+    color: white;
+    opacity: 0.8;
+}
+
+/* Line separator */
+.line-container {
+    position: absolute;
+    z-index: 101;
+    top: 75px;
+    left: 60px;
+    right: 60px;
+    height: 2.4px;
+}
+
+.line-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1.2px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 2px;
+}
+
+.line-image {
+    display: none;
+}
+
+.line-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Navigation */
+.navigation {
+    position: absolute;
+    z-index: 101;
+    top: 26px;
+    left: 0;
+    right: 0;
+}
+
+.nav-item {
+    position: absolute;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+    color: white;
+    margin: 0;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    opacity: 0.7;
+}
+
+.nav-approach {
+    left: 60px;
+    width: 186px;
+    height: 51px;
+}
+
+.nav-portfolio {
+    left: 278px;
+    width: 117px;
+    height: 30px;
+}
+
+.nav-team {
+    left: 427px;
+    width: 94px;
+    height: 30px;
+}
+
+.nav-bios {
+    right: 60px;
+    text-align: right;
+    width: 94px;
+    height: 30px;
+}
+
+/* Hero Container - Centered like Novana */
+.hero-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 2;
+    padding: 0 60px;
+    padding-top: 15vh;
+}
+
+/* Hero Content - Centered layout */
+.hero-content {
+    max-width: 1000px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+/* Hero Title - Large, bold, centered heading */
+.hero-title {
+    font-family: 'IBM Plex Sans JP', sans-serif;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 70px;
+    color: white;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+}
+
+/* Hero Subtitle - Smaller descriptive text */
+.hero-subtitle {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: normal;
+    color: white;
+    margin: 0;
+    text-align: center;
+    max-width: 100%;
+}
+
+/* Content Boxes */
+.content-boxes {
+    position: absolute;
+    z-index: 2;
+    bottom: 320px;
+    left: 60px;
+    right: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-box {
+    width: 569px;
+    height: 461px;
+    background-color: rgba(0, 56, 240, 0.35);
+}
+
+.box-left {
+    margin-right: auto;
+}
+
+.box-right {
+    margin-left: auto;
+}
+
+/* Spotlight Container - Flexbox layout like Sequoia/Contrary */
+.spotlight-container {
+    position: absolute;
+    left: 60px;
+    right: 60px;
+    top: 120vh; /* Position lower - requires scrolling */
+    z-index: 2;
+    display: flex;
+    gap: 20px; /* Close gap between boxes */
+    align-items: flex-start;
+}
+
+/* Bottom Content - Spotlight boxes */
+.bottom-content {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: normal;
+    color: black;
+    flex: 0 1 400px; /* Flexible width, max 400px */
+    white-space: pre-wrap;
+    margin: 0;
+}
+
+/* Responsive adjustments for spotlight boxes */
+@media (max-width: 1200px) {
+    .spotlight-container {
+        gap: 15px; /* Even closer on medium screens */
+    }
+    
+    .bottom-content {
+        flex: 0 1 350px; /* Slightly smaller on medium screens */
+    }
+}
+
+@media (max-width: 1000px) {
+    .spotlight-container {
+        flex-direction: column; /* Stack vertically on smaller screens */
+        gap: 20px;
+    }
+    
+    .bottom-content {
+        flex: 1 1 auto; /* Full width when stacked */
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .left-content,
+    .right-content {
+        position: relative;
+        left: 60px !important;
+        top: auto !important;
+        margin-top: 40px;
+        display: block;
+        max-width: calc(100% - 120px);
+    }
+    
+    .right-content {
+        margin-top: 20px; /* Smaller gap between boxes when stacked */
+        left: 60px !important;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+    .line {
+        width: calc(100vw - 95px);
+    }
+    
+    .content-boxes {
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+    }
+    
+    .content-box {
+        width: 100%;
+        max-width: 569px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 36px;
+        width: 100px;
+        height: 60px;
+    }
+    
+    .navigation {
+        flex-wrap: wrap;
+        gap: 20px;
+        top: 90px;
+    }
+    
+    .nav-item {
+        font-size: 18px;
+    }
+    
+    .nav-portfolio,
+    .nav-team {
+        margin-left: 0;
+    }
+    
+    .hero-container {
+        padding: 0 20px;
+        align-items: flex-start;
+        padding-top: 10vh;
+    }
+    
+    .hero-content {
+        max-width: 90%;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        text-align: left;
+    }
+    
+    .content-boxes {
+        bottom: 200px;
+    }
+    
+    .spotlight-container {
+        left: 20px;
+        right: 20px;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .bottom-content {
+        font-size: 20px;
+        flex: 1 1 auto;
+        max-width: 100%;
+    }
+}
+
+
