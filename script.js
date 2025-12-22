@@ -263,9 +263,9 @@ class FlowingPointCloud {
         const normalizedY = y / containerHeight; // 0 = top, 1 = bottom
         const topBrightnessBoost = (1 - normalizedY) * 0.4; // Boost brightness at top
         
-        // Dark purple-blue particles - matching glass effect (#1F1A5E)
+        // Dark purple-blue particles - matching glass effect (#122555)
         // Keep consistent color matching glass effect
-        this.ctx.fillStyle = 'rgba(31, 26, 94, 0.8)';
+        this.ctx.fillStyle = 'rgba(18, 37, 85, 0.8)';
         
         // Opacity for particles - adjust based on intensity for depth
         const baseAlpha = 0.6;
@@ -461,13 +461,13 @@ document.addEventListener('DOMContentLoaded', function() {
     contentBoxes.forEach(box => {
         box.addEventListener('mouseenter', function() {
             this.style.transition = 'background-color 0.3s ease, transform 0.3s ease';
-            this.style.backgroundColor = 'rgba(31, 26, 94, 0.5)';
+            this.style.backgroundColor = 'rgba(18, 37, 85, 0.5)';
             this.style.transform = 'translateY(-5px)';
             this.style.cursor = 'pointer';
         });
         
         box.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'rgba(31, 26, 94, 0.35)';
+            this.style.backgroundColor = 'rgba(18, 37, 85, 0.35)';
             this.style.transform = 'translateY(0)';
         });
         
@@ -504,52 +504,30 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Scroll reveal/fade for spotlight grid container
+    // Scroll reveal/fade for spotlight grid container - pure IntersectionObserver, no scroll listeners
     const spotlightContainer = document.querySelector('.spotlight-container');
     if (spotlightContainer) {
-        let lastScrollY = window.scrollY;
-        let isVisible = false;
-        
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-            
-            // Show as soon as user scrolls down (any amount of scrolling)
-            if (currentScrollY > 50 && currentScrollY > lastScrollY) {
-                if (!isVisible) {
-                    spotlightContainer.classList.add('visible');
-                    isVisible = true;
-                }
-            }
-            // Hide when scrolling back to top
-            else if (currentScrollY <= 50 || (currentScrollY < lastScrollY && currentScrollY < 100)) {
-                if (isVisible) {
-                    spotlightContainer.classList.remove('visible');
-                    isVisible = false;
-                }
-            }
-            
-            lastScrollY = currentScrollY;
-        };
-        
-        // Initial check - ensure it's hidden on page load
+        // Initial state - hidden on page load
         spotlightContainer.classList.remove('visible');
-        isVisible = false;
         
-        // Throttle scroll events for performance
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    handleScroll();
-                    ticking = false;
-                });
-                ticking = true;
+        // Use IntersectionObserver only - completely eliminates scroll listeners
+        const observer = new IntersectionObserver((entries) => {
+            const entry = entries[0];
+            if (entry.isIntersecting) {
+                spotlightContainer.classList.add('visible');
+            } else {
+                spotlightContainer.classList.remove('visible');
             }
+        }, {
+            threshold: 0,
+            rootMargin: '-100px 0px 0px 0px' // Show when scrolled down 100px
         });
+        
+        observer.observe(spotlightContainer);
     }
     
-    // Smooth scroll for the entire page
-    document.documentElement.style.scrollBehavior = 'smooth';
+    // Removed smooth scroll to eliminate lag
+    
     
     // Removed parallax effect for smoother scrolling
 });

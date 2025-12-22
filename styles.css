@@ -7,11 +7,13 @@
 
 html {
     zoom: 0.9; /* Scale entire page to 90% */
+    background-color: #F5EDE0; /* Lighter cream background */
 }
 
 body {
     font-family: 'IBM Plex Sans', sans-serif;
     overflow-x: hidden;
+    background-color: #F5EDE0; /* Lighter cream background */
 }
 
 /* Remove underlines from all links by default */
@@ -24,12 +26,12 @@ a {
     position: relative;
     width: 100%;
     height: 100px;
-    background: #1F1A5E; /* Dark purple-blue glass effect */
+    background: #122555; /* Dark purple-blue glass effect */
     z-index: 100;
 }
 
 .desktop {
-    background: #ffffff; /* White background */
+    background: #F5EDE0; /* Lighter cream background */
     position: relative;
     width: 100%;
     min-height: 400vh; /* Increased to accommodate more boxes and scrolling */
@@ -63,7 +65,7 @@ a {
     top: 5px;
     width: 136px;
     height: 89px;
-    color: white;
+    color: #F5EDE0;
     text-align: center;
     white-space: pre-wrap;
     margin: 0;
@@ -79,7 +81,7 @@ a {
 .logo:focus,
 .logo:active {
     text-decoration: none !important;
-    color: white;
+    color: #F5EDE0;
     opacity: 0.8;
 }
 
@@ -100,7 +102,7 @@ a {
     left: 0;
     width: 100%;
     height: 1.2px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(245, 237, 224, 0.9);
     border-radius: 2px;
 }
 
@@ -129,7 +131,7 @@ a {
     font-size: 20px;
     font-weight: 400;
     line-height: normal;
-    color: white;
+    color: #F5EDE0;
     margin: 0;
     cursor: pointer;
     transition: opacity 0.3s ease;
@@ -176,47 +178,126 @@ a {
     align-items: flex-start;
     justify-content: center;
     z-index: 2;
-    padding: 0 60px;
-    padding-top: 15vh;
+    padding: 0;
+    padding-top: 20vh;
 }
 
-/* Hero Content - Centered layout */
+/* Hero Content - Full width layout */
 .hero-content {
-    max-width: 1400px;
+    max-width: 100%;
     text-align: center;
     position: relative;
     width: 100%;
-    padding: 0 60px;
+    padding: 0 80px;
 }
 
-/* Hero Title - Large, bold, centered heading */
+/* Hero Title - Large, bold, full-width heading */
 .hero-title {
     font-family: 'IBM Plex Sans JP', sans-serif;
-    font-size: 72px;
-    font-weight: 500;
-    line-height: 84px;
-    color: #1F1A5E; /* Dark purple-blue glass effect */
-    margin: 0 0 1.5rem 0;
+    font-size: 110px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #122555; /* Dark purple-blue glass effect */
+    margin: 0 0 2rem 0;
     text-align: center;
     white-space: pre-line;
+    width: 100%;
+    letter-spacing: -2px;
+    position: relative;
+    /* Base shiny metallic border effect - more intense and visible */
+    text-shadow: 
+        /* Base silver/glassy border - more intense and thicker */
+        -3px -3px 0px rgba(220, 220, 240, 0.95),
+        3px -3px 0px rgba(220, 220, 240, 0.95),
+        -3px 3px 0px rgba(220, 220, 240, 0.95),
+        3px 3px 0px rgba(220, 220, 240, 0.95),
+        -4px -4px 1px rgba(240, 240, 255, 0.9),
+        4px -4px 1px rgba(240, 240, 255, 0.9),
+        -4px 4px 1px rgba(240, 240, 255, 0.9),
+        4px 4px 1px rgba(240, 240, 255, 0.9),
+        -5px -5px 2px rgba(255, 255, 255, 0.8),
+        5px -5px 2px rgba(255, 255, 255, 0.8),
+        -5px 5px 2px rgba(255, 255, 255, 0.8),
+        5px 5px 2px rgba(255, 255, 255, 0.8),
+        -6px -6px 3px rgba(255, 255, 255, 0.7),
+        6px -6px 3px rgba(255, 255, 255, 0.7),
+        -6px 6px 3px rgba(255, 255, 255, 0.7),
+        6px 6px 3px rgba(255, 255, 255, 0.7),
+        /* Stronger glow */
+        0 0 20px rgba(220, 220, 240, 0.7),
+        0 0 40px rgba(240, 240, 255, 0.5),
+        0 0 60px rgba(255, 255, 255, 0.3);
+    animation: metallicShine 4s ease-in-out infinite;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+@keyframes metallicShine {
+    0%, 100% {
+        text-shadow: 
+            -3px -3px 0px rgba(220, 220, 240, 0.95),
+            3px -3px 0px rgba(220, 220, 240, 0.95),
+            -3px 3px 0px rgba(220, 220, 240, 0.95),
+            3px 3px 0px rgba(220, 220, 240, 0.95),
+            -4px -4px 1px rgba(240, 240, 255, 0.9),
+            4px -4px 1px rgba(240, 240, 255, 0.9),
+            -4px 4px 1px rgba(240, 240, 255, 0.9),
+            4px 4px 1px rgba(240, 240, 255, 0.9),
+            -5px -5px 2px rgba(255, 255, 255, 0.8),
+            5px -5px 2px rgba(255, 255, 255, 0.8),
+            -5px 5px 2px rgba(255, 255, 255, 0.8),
+            5px 5px 2px rgba(255, 255, 255, 0.8),
+            -6px -6px 3px rgba(255, 255, 255, 0.7),
+            6px -6px 3px rgba(255, 255, 255, 0.7),
+            -6px 6px 3px rgba(255, 255, 255, 0.7),
+            6px 6px 3px rgba(255, 255, 255, 0.7),
+            0 0 20px rgba(220, 220, 240, 0.7),
+            0 0 40px rgba(240, 240, 255, 0.5),
+            0 0 60px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        text-shadow: 
+            -3px -3px 0px rgba(220, 220, 240, 0.95),
+            3px -3px 0px rgba(220, 220, 240, 0.95),
+            -3px 3px 0px rgba(220, 220, 240, 0.95),
+            3px 3px 0px rgba(220, 220, 240, 0.95),
+            -4px -4px 1px rgba(240, 240, 255, 0.9),
+            4px -4px 1px rgba(240, 240, 255, 0.9),
+            -4px 4px 1px rgba(240, 240, 255, 0.9),
+            4px 4px 1px rgba(240, 240, 255, 0.9),
+            -5px -5px 2px rgba(255, 255, 255, 1),
+            5px -5px 2px rgba(255, 255, 255, 1),
+            -5px 5px 2px rgba(255, 255, 255, 1),
+            5px 5px 2px rgba(255, 255, 255, 1),
+            -6px -6px 3px rgba(255, 255, 255, 0.9),
+            6px -6px 3px rgba(255, 255, 255, 0.9),
+            -6px 6px 3px rgba(255, 255, 255, 0.9),
+            6px 6px 3px rgba(255, 255, 255, 0.9),
+            0 0 25px rgba(255, 255, 255, 0.8),
+            0 0 50px rgba(255, 255, 255, 0.6),
+            0 0 75px rgba(255, 255, 255, 0.4);
+    }
 }
 
 .hero-title em {
     font-style: italic;
     font-family: 'IBM Plex Sans JP', sans-serif;
+    font-weight: 700;
 }
 
-/* Hero Subtitle - Smaller descriptive text */
+/* Hero Subtitle - Larger, bolder descriptive text */
 .hero-subtitle {
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 22px;
+    font-weight: 600;
     line-height: 1.5;
-    color: #1F1A5E; /* Dark purple-blue glass effect */
+    color: #122555; /* Dark purple-blue glass effect */
     margin: 0 auto;
     text-align: center;
-    max-width: 1200px;
-    padding: 0 60px;
+    max-width: 100%;
+    width: 100%;
+    padding: 0 80px;
+    white-space: pre-line;
 }
 
 /* Content Boxes */
@@ -233,7 +314,7 @@ a {
 .content-box {
     width: 569px;
     height: 461px;
-    background-color: rgba(31, 26, 94, 0.35);
+    background-color: rgba(18, 37, 85, 0.35);
 }
 
 .box-left {
@@ -274,23 +355,23 @@ a {
 
 /* Spotlight Box - Individual grid item */
 .spotlight-box {
-    background-color: rgba(31, 26, 94, 0.15); /* Dark purple-blue with glass effect */
+    background-color: rgba(18, 37, 85, 0.15); /* Dark purple-blue with glass effect */
     backdrop-filter: blur(10px); /* Glass effect */
     -webkit-backdrop-filter: blur(10px); /* Safari support */
-    border: 1px solid rgba(31, 26, 94, 0.2); /* Subtle border for glass effect */
+    border: 1px solid rgba(18, 37, 85, 0.2); /* Subtle border for glass effect */
     border-radius: 1%; /* 1% rounded corners */
     padding: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
-    box-shadow: 0 4px 6px rgba(31, 26, 94, 0.1); /* Subtle shadow for depth */
+    box-shadow: 0 4px 6px rgba(18, 37, 85, 0.1); /* Subtle shadow for depth */
 }
 
 .spotlight-box:hover {
     transform: translateY(-5px);
-    background-color: rgba(31, 26, 94, 0.25);
-    box-shadow: 0 8px 12px rgba(31, 26, 94, 0.15);
+    background-color: rgba(18, 37, 85, 0.25);
+    box-shadow: 0 8px 12px rgba(18, 37, 85, 0.15);
 }
 
 /* First 6 boxes - different shapes while maintaining 2-row grid perimeter */
@@ -299,42 +380,42 @@ a {
     grid-column: 1 / 2;
     grid-row: 1 / 3; /* Tall - spans both rows */
     min-height: 600px;
-    background-color: rgba(31, 26, 94, 0.18); /* Top row - slightly darker */
+    background-color: rgba(18, 37, 85, 0.18); /* Top row - slightly darker */
 }
 
 .spotlight-box.box-2 {
     grid-column: 2 / 4;
     grid-row: 1 / 2; /* Wide - spans 2 columns, row 1 */
     min-height: 280px;
-    background-color: rgba(31, 26, 94, 0.18); /* Top row - slightly darker */
+    background-color: rgba(18, 37, 85, 0.18); /* Top row - slightly darker */
 }
 
 .spotlight-box.box-3 {
     grid-column: 2 / 3;
     grid-row: 2 / 3; /* Small square, row 2 */
     min-height: 300px;
-    background-color: rgba(31, 26, 94, 0.16); /* Second row - lighter */
+    background-color: rgba(18, 37, 85, 0.16); /* Second row - lighter */
 }
 
 .spotlight-box.box-4 {
     grid-column: 3 / 4;
     grid-row: 2 / 3; /* Small square, row 2 */
     min-height: 300px;
-    background-color: rgba(31, 26, 94, 0.16); /* Second row - lighter */
+    background-color: rgba(18, 37, 85, 0.16); /* Second row - lighter */
 }
 
 .spotlight-box.box-5 {
     grid-column: 1 / 3;
     grid-row: 3 / 4; /* Wide - spans 2 columns, row 3 */
     min-height: 280px;
-    background-color: rgba(31, 26, 94, 0.14); /* Third row - even lighter */
+    background-color: rgba(18, 37, 85, 0.14); /* Third row - even lighter */
 }
 
 .spotlight-box.box-6 {
     grid-column: 3 / 4;
     grid-row: 3 / 5; /* Tall - spans 2 rows */
     min-height: 600px;
-    background-color: rgba(31, 26, 94, 0.14); /* Third row - even lighter */
+    background-color: rgba(18, 37, 85, 0.14); /* Third row - even lighter */
 }
 
 /* Additional boxes that fade into footer - multi-shaped */
@@ -343,42 +424,42 @@ a {
     grid-column: 1 / 2;
     grid-row: 4 / 5;
     min-height: 300px;
-    background-color: rgba(31, 26, 94, 0.12); /* Fourth row - lighter */
+    background-color: rgba(18, 37, 85, 0.12); /* Fourth row - lighter */
 }
 
 .spotlight-box.box-8 {
     grid-column: 2 / 3;
     grid-row: 4 / 5;
     min-height: 300px;
-    background-color: rgba(31, 26, 94, 0.12); /* Fourth row - lighter */
+    background-color: rgba(18, 37, 85, 0.12); /* Fourth row - lighter */
 }
 
 .spotlight-box.box-9 {
     grid-column: 1 / 2;
     grid-row: 5 / 6;
     min-height: 220px;
-    background-color: rgba(31, 26, 94, 0.10); /* Fifth row - even lighter */
+    background-color: rgba(18, 37, 85, 0.10); /* Fifth row - even lighter */
 }
 
 .spotlight-box.box-10 {
     grid-column: 2 / 4;
     grid-row: 5 / 6;
     min-height: 220px;
-    background-color: rgba(31, 26, 94, 0.10); /* Fifth row - even lighter */
+    background-color: rgba(18, 37, 85, 0.10); /* Fifth row - even lighter */
 }
 
 .spotlight-box.box-11 {
     grid-column: 1 / 3;
     grid-row: 6 / 7;
     min-height: 200px;
-    background-color: rgba(31, 26, 94, 0.08); /* Sixth row - lightest */
+    background-color: rgba(18, 37, 85, 0.08); /* Sixth row - lightest */
 }
 
 .spotlight-box.box-12 {
     grid-column: 3 / 4;
     grid-row: 6 / 7;
     min-height: 200px;
-    background-color: rgba(31, 26, 94, 0.08); /* Sixth row - lightest */
+    background-color: rgba(18, 37, 85, 0.08); /* Sixth row - lightest */
 }
 
 /* Bottom Content - Spotlight boxes */
@@ -459,6 +540,32 @@ a {
         width: 100%;
         max-width: 569px;
     }
+    
+    .hero-title {
+        font-size: 100px;
+    }
+    
+    .hero-subtitle {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 90px;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+    }
+    
+    .hero-content {
+        padding: 0 60px;
+    }
+    
+    .hero-subtitle {
+        padding: 0 60px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -486,23 +593,26 @@ a {
     .hero-container {
         padding: 0 20px;
         align-items: flex-start;
-        padding-top: 10vh;
+        padding-top: 15vh;
     }
     
     .hero-content {
-        max-width: 90%;
+        max-width: 100%;
+        padding: 0 40px;
     }
     
     .hero-title {
-        font-size: 2rem;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
+        font-size: 60px;
+        line-height: 1.1;
+        margin-bottom: 2rem;
+        letter-spacing: -1px;
     }
     
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 18px;
         line-height: 1.5;
-        text-align: left;
+        text-align: center;
+        padding: 0 40px;
     }
     
     .content-boxes {
@@ -532,7 +642,7 @@ a {
 /* Footer */
 .site-footer {
     width: 100%;
-    background-color: #ffffff;
+    background-color: #F5EDE0;
     padding: 40px 0;
     text-align: center;
     margin-top: auto;
@@ -554,7 +664,7 @@ a {
     left: 0;
     width: 100%;
     height: 1.2px;
-    background-color: rgba(31, 26, 94, 0.9);
+    background-color: rgba(18, 37, 85, 0.9);
     border-radius: 2px;
 }
 
@@ -562,6 +672,6 @@ a {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: #1F1A5E;
+    color: #122555;
     margin: 0;
 }
