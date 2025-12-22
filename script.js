@@ -263,9 +263,9 @@ class FlowingPointCloud {
         const normalizedY = y / containerHeight; // 0 = top, 1 = bottom
         const topBrightnessBoost = (1 - normalizedY) * 0.4; // Boost brightness at top
         
-        // Dark purple-blue particles - matching glass effect (#122555)
+        // Dark purple-blue particles - matching glass effect (#011b31)
         // Keep consistent color matching glass effect
-        this.ctx.fillStyle = 'rgba(18, 37, 85, 0.8)';
+        this.ctx.fillStyle = 'rgba(1, 27, 49, 0.8)';
         
         // Opacity for particles - adjust based on intensity for depth
         const baseAlpha = 0.6;
@@ -461,13 +461,13 @@ document.addEventListener('DOMContentLoaded', function() {
     contentBoxes.forEach(box => {
         box.addEventListener('mouseenter', function() {
             this.style.transition = 'background-color 0.3s ease, transform 0.3s ease';
-            this.style.backgroundColor = 'rgba(18, 37, 85, 0.5)';
+            this.style.backgroundColor = 'rgba(1, 27, 49, 0.5)';
             this.style.transform = 'translateY(-5px)';
             this.style.cursor = 'pointer';
         });
         
         box.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'rgba(18, 37, 85, 0.35)';
+            this.style.backgroundColor = 'rgba(1, 27, 49, 0.35)';
             this.style.transform = 'translateY(0)';
         });
         
@@ -504,19 +504,41 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Scroll reveal/fade for spotlight grid container - pure IntersectionObserver, no scroll listeners
+    // Scroll reveal/fade for spotlight grid container and background image - pure IntersectionObserver, no scroll listeners
     const spotlightContainer = document.querySelector('.spotlight-container');
+    const backgroundImage = document.querySelector('.scroll-background-image');
+    const particleCanvas = document.getElementById('particle-canvas');
+    
     if (spotlightContainer) {
         // Initial state - hidden on page load
         spotlightContainer.classList.remove('visible');
+        if (backgroundImage) {
+            backgroundImage.classList.remove('visible');
+        }
         
         // Use IntersectionObserver only - completely eliminates scroll listeners
         const observer = new IntersectionObserver((entries) => {
             const entry = entries[0];
             if (entry.isIntersecting) {
                 spotlightContainer.classList.add('visible');
+                if (backgroundImage) {
+                    backgroundImage.classList.add('visible');
+                }
+                // Hide particle canvas when background image is visible
+                if (particleCanvas) {
+                    particleCanvas.style.opacity = '0';
+                    particleCanvas.style.transition = 'opacity 0.8s ease';
+                }
             } else {
                 spotlightContainer.classList.remove('visible');
+                if (backgroundImage) {
+                    backgroundImage.classList.remove('visible');
+                }
+                // Show particle canvas again when scrolling back up
+                if (particleCanvas) {
+                    particleCanvas.style.opacity = '1';
+                    particleCanvas.style.transition = 'opacity 0.8s ease';
+                }
             }
         }, {
             threshold: 0,

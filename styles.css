@@ -26,9 +26,35 @@ a {
     position: relative;
     width: 100%;
     height: 100px;
-    background: #122555; /* Dark purple-blue glass effect */
     z-index: 100;
+    overflow: hidden; /* Ensure rotated background stays within bounds */
 }
+
+.header-bar::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300vw; /* Larger container to reduce scaling needs */
+    height: 300vh; /* Larger container to reduce scaling needs */
+    background-image: url('Background Images/background_image_1.png');
+    background-size: 80% auto; /* Zoomed out more for better quality while maintaining coverage */
+    background-position: 50% 60%; /* Position to show darker section with more dark blue */
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%) rotate(90deg) scale(1.25) translateZ(0); /* Scale up to ensure full coverage */
+    transform-origin: center center;
+    will-change: transform; /* Optimize for transforms */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    image-rendering: -webkit-optimize-contrast; /* High quality rendering */
+    image-rendering: crisp-edges; /* Sharp edges */
+    -ms-interpolation-mode: bicubic; /* Better quality interpolation */
+    filter: contrast(1.05) brightness(1.02); /* Slight enhancement for clarity */
+    opacity: 0.6; /* Make image more translucent */
+    z-index: 0; /* Behind content */
+}
+
+/* Overlay removed - background image is fully opaque */
 
 .desktop {
     background: #F5EDE0; /* Lighter cream background */
@@ -48,14 +74,14 @@ a {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1;
+    z-index: 0; /* Behind background image */
     display: block;
 }
 
 /* Logo */
 .logo {
     position: absolute;
-    z-index: 101;
+    z-index: 2; /* Above overlay */
     font-family: 'Instrument Serif', serif;
     font-size: 48px;
     font-weight: 400;
@@ -74,6 +100,10 @@ a {
     transition: opacity 0.3s ease;
     border: none;
     outline: none;
+    /* Dark blue border like hero text */
+    -webkit-text-stroke: 1.5px #011b31;
+    text-stroke: 1.5px #011b31;
+    paint-order: stroke fill;
 }
 
 .logo:hover,
@@ -88,7 +118,7 @@ a {
 /* Line separator */
 .line-container {
     position: absolute;
-    z-index: 101;
+    z-index: 2; /* Above overlay */
     top: 75px;
     left: 60px;
     right: 60px;
@@ -119,7 +149,7 @@ a {
 /* Navigation */
 .navigation {
     position: absolute;
-    z-index: 101;
+    z-index: 2; /* Above overlay */
     top: 26px;
     left: 0;
     right: 0;
@@ -136,6 +166,10 @@ a {
     cursor: pointer;
     transition: opacity 0.3s ease;
     text-decoration: none;
+    /* Dark blue border like hero text */
+    -webkit-text-stroke: 1.5px #011b31;
+    text-stroke: 1.5px #011b31;
+    paint-order: stroke fill;
 }
 
 .nav-item:hover {
@@ -197,87 +231,15 @@ a {
     font-size: 110px;
     font-weight: 700;
     line-height: 1.1;
-    color: #122555; /* Dark purple-blue glass effect */
+    color: #0a2d4a; /* Slightly lighter dark blue from background image */
     margin: 0 0 2rem 0;
     text-align: center;
     white-space: pre-line;
     width: 100%;
     letter-spacing: -2px;
     position: relative;
-    /* Base shiny metallic border effect - more intense and visible */
-    text-shadow: 
-        /* Base silver/glassy border - more intense and thicker */
-        -3px -3px 0px rgba(220, 220, 240, 0.95),
-        3px -3px 0px rgba(220, 220, 240, 0.95),
-        -3px 3px 0px rgba(220, 220, 240, 0.95),
-        3px 3px 0px rgba(220, 220, 240, 0.95),
-        -4px -4px 1px rgba(240, 240, 255, 0.9),
-        4px -4px 1px rgba(240, 240, 255, 0.9),
-        -4px 4px 1px rgba(240, 240, 255, 0.9),
-        4px 4px 1px rgba(240, 240, 255, 0.9),
-        -5px -5px 2px rgba(255, 255, 255, 0.8),
-        5px -5px 2px rgba(255, 255, 255, 0.8),
-        -5px 5px 2px rgba(255, 255, 255, 0.8),
-        5px 5px 2px rgba(255, 255, 255, 0.8),
-        -6px -6px 3px rgba(255, 255, 255, 0.7),
-        6px -6px 3px rgba(255, 255, 255, 0.7),
-        -6px 6px 3px rgba(255, 255, 255, 0.7),
-        6px 6px 3px rgba(255, 255, 255, 0.7),
-        /* Stronger glow */
-        0 0 20px rgba(220, 220, 240, 0.7),
-        0 0 40px rgba(240, 240, 255, 0.5),
-        0 0 60px rgba(255, 255, 255, 0.3);
-    animation: metallicShine 4s ease-in-out infinite;
-    backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
 }
 
-@keyframes metallicShine {
-    0%, 100% {
-        text-shadow: 
-            -3px -3px 0px rgba(220, 220, 240, 0.95),
-            3px -3px 0px rgba(220, 220, 240, 0.95),
-            -3px 3px 0px rgba(220, 220, 240, 0.95),
-            3px 3px 0px rgba(220, 220, 240, 0.95),
-            -4px -4px 1px rgba(240, 240, 255, 0.9),
-            4px -4px 1px rgba(240, 240, 255, 0.9),
-            -4px 4px 1px rgba(240, 240, 255, 0.9),
-            4px 4px 1px rgba(240, 240, 255, 0.9),
-            -5px -5px 2px rgba(255, 255, 255, 0.8),
-            5px -5px 2px rgba(255, 255, 255, 0.8),
-            -5px 5px 2px rgba(255, 255, 255, 0.8),
-            5px 5px 2px rgba(255, 255, 255, 0.8),
-            -6px -6px 3px rgba(255, 255, 255, 0.7),
-            6px -6px 3px rgba(255, 255, 255, 0.7),
-            -6px 6px 3px rgba(255, 255, 255, 0.7),
-            6px 6px 3px rgba(255, 255, 255, 0.7),
-            0 0 20px rgba(220, 220, 240, 0.7),
-            0 0 40px rgba(240, 240, 255, 0.5),
-            0 0 60px rgba(255, 255, 255, 0.3);
-    }
-    50% {
-        text-shadow: 
-            -3px -3px 0px rgba(220, 220, 240, 0.95),
-            3px -3px 0px rgba(220, 220, 240, 0.95),
-            -3px 3px 0px rgba(220, 220, 240, 0.95),
-            3px 3px 0px rgba(220, 220, 240, 0.95),
-            -4px -4px 1px rgba(240, 240, 255, 0.9),
-            4px -4px 1px rgba(240, 240, 255, 0.9),
-            -4px 4px 1px rgba(240, 240, 255, 0.9),
-            4px 4px 1px rgba(240, 240, 255, 0.9),
-            -5px -5px 2px rgba(255, 255, 255, 1),
-            5px -5px 2px rgba(255, 255, 255, 1),
-            -5px 5px 2px rgba(255, 255, 255, 1),
-            5px 5px 2px rgba(255, 255, 255, 1),
-            -6px -6px 3px rgba(255, 255, 255, 0.9),
-            6px -6px 3px rgba(255, 255, 255, 0.9),
-            -6px 6px 3px rgba(255, 255, 255, 0.9),
-            6px 6px 3px rgba(255, 255, 255, 0.9),
-            0 0 25px rgba(255, 255, 255, 0.8),
-            0 0 50px rgba(255, 255, 255, 0.6),
-            0 0 75px rgba(255, 255, 255, 0.4);
-    }
-}
 
 .hero-title em {
     font-style: italic;
@@ -291,7 +253,7 @@ a {
     font-size: 22px;
     font-weight: 600;
     line-height: 1.5;
-    color: #122555; /* Dark purple-blue glass effect */
+    color: #0a2d4a; /* Slightly lighter dark blue from background image */
     margin: 0 auto;
     text-align: center;
     max-width: 100%;
@@ -314,7 +276,7 @@ a {
 .content-box {
     width: 569px;
     height: 461px;
-    background-color: rgba(18, 37, 85, 0.35);
+    background-color: rgba(1, 27, 49, 0.35);
 }
 
 .box-left {
@@ -325,12 +287,35 @@ a {
     margin-left: auto;
 }
 
+/* Scroll Background Image - appears behind glass boxes on scroll */
+.scroll-background-image {
+    position: absolute;
+    top: calc(110vh - 20px); /* Slightly above boxes (20px extension) */
+    left: 60px; /* Slightly wider than boxes (boxes are at 80px) */
+    right: 60px; /* Slightly wider than boxes (boxes are at 80px) */
+    bottom: 240px; /* End above footer with space for rounded corners */
+    z-index: 1; /* Above particle canvas (z-index: 0) but behind boxes (z-index: 2) */
+    background-color: #0a2d4a; /* Slightly lighter dark blue, matching hero text */
+    border-radius: 20px 20px 20px 20px; /* Explicitly rounded corners on all sides */
+    clip-path: inset(0 round 20px); /* Ensure all corners are rounded, including bottom */
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+.scroll-background-image.visible {
+    opacity: 0.6; /* Translucent dark blue, matching header/footer */
+}
+
+
 /* Spotlight Container - Grid layout */
 .spotlight-container {
     position: absolute;
     left: 80px;
     right: 80px;
     top: 110vh; /* Position higher up */
+    bottom: calc(240px + 20px); /* Match background bottom (240px) plus some margin */
     z-index: 2;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -343,7 +328,8 @@ a {
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
     pointer-events: none;
-    padding-bottom: 400px; /* Space for fading boxes */
+    padding-bottom: 0; /* No extra padding - tabs should fit within background */
+    overflow: hidden; /* Clip tabs that extend past background */
 }
 
 .spotlight-container.visible {
@@ -355,111 +341,142 @@ a {
 
 /* Spotlight Box - Individual grid item */
 .spotlight-box {
-    background-color: rgba(18, 37, 85, 0.15); /* Dark purple-blue with glass effect */
+    background-color: rgba(1, 27, 49, 0.35); /* Less transparent - increased from 0.15 */
     backdrop-filter: blur(10px); /* Glass effect */
     -webkit-backdrop-filter: blur(10px); /* Safari support */
-    border: 1px solid rgba(18, 37, 85, 0.2); /* Subtle border for glass effect */
+    border: 2px solid #F5EDE0; /* Cream border matching background */
     border-radius: 1%; /* 1% rounded corners */
     padding: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
-    box-shadow: 0 4px 6px rgba(18, 37, 85, 0.1); /* Subtle shadow for depth */
+    box-shadow: 0 4px 6px rgba(1, 27, 49, 0.15); /* Subtle shadow for depth */
 }
 
 .spotlight-box:hover {
     transform: translateY(-5px);
-    background-color: rgba(18, 37, 85, 0.25);
-    box-shadow: 0 8px 12px rgba(18, 37, 85, 0.15);
+    background-color: rgba(1, 27, 49, 0.45);
+    box-shadow: 0 8px 12px rgba(1, 27, 49, 0.2);
 }
 
-/* First 6 boxes - different shapes while maintaining 2-row grid perimeter */
+/* All boxes are rectangular with different sizes - fit within background */
 /* Progressively lighter from top to bottom */
 .spotlight-box.box-1 {
-    grid-column: 1 / 2;
-    grid-row: 1 / 3; /* Tall - spans both rows */
-    min-height: 600px;
-    background-color: rgba(18, 37, 85, 0.18); /* Top row - slightly darker */
+    grid-column: 1 / 3; /* Wide - spans 2 columns */
+    grid-row: 1 / 2;
+    min-height: 280px;
+    background-color: rgba(1, 27, 49, 0.38); /* Top row - less transparent */
 }
 
 .spotlight-box.box-2 {
-    grid-column: 2 / 4;
-    grid-row: 1 / 2; /* Wide - spans 2 columns, row 1 */
-    min-height: 280px;
-    background-color: rgba(18, 37, 85, 0.18); /* Top row - slightly darker */
+    grid-column: 3 / 4;
+    grid-row: 1 / 4; /* Extended to reach top of box below */
+    min-height: 580px;
+    background-color: rgba(1, 27, 49, 0.38); /* Top row - less transparent */
 }
 
 .spotlight-box.box-3 {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3; /* Small square, row 2 */
-    min-height: 300px;
-    background-color: rgba(18, 37, 85, 0.16); /* Second row - lighter */
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    min-height: 280px;
+    background-color: rgba(1, 27, 49, 0.36); /* Second row - less transparent */
 }
 
 .spotlight-box.box-4 {
-    grid-column: 3 / 4;
-    grid-row: 2 / 3; /* Small square, row 2 */
-    min-height: 300px;
-    background-color: rgba(18, 37, 85, 0.16); /* Second row - lighter */
+    grid-column: 2 / 3;
+    grid-row: 2 / 4; /* Tall - spans 2 rows */
+    min-height: 580px;
+    background-color: rgba(1, 27, 49, 0.36); /* Second row - less transparent */
 }
 
 .spotlight-box.box-5 {
-    grid-column: 1 / 3;
-    grid-row: 3 / 4; /* Wide - spans 2 columns, row 3 */
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
     min-height: 280px;
-    background-color: rgba(18, 37, 85, 0.14); /* Third row - even lighter */
+    background-color: rgba(1, 27, 49, 0.34); /* Third row - less transparent */
 }
 
 .spotlight-box.box-6 {
-    grid-column: 3 / 4;
-    grid-row: 3 / 5; /* Tall - spans 2 rows */
-    min-height: 600px;
-    background-color: rgba(18, 37, 85, 0.14); /* Third row - even lighter */
+    grid-column: 2 / 4; /* Wide - spans 2 columns */
+    grid-row: 4 / 5;
+    min-height: 260px;
+    background-color: rgba(1, 27, 49, 0.34); /* Third row - less transparent */
 }
 
-/* Additional boxes that fade into footer - multi-shaped */
-/* Progressively lighter as they go down */
 .spotlight-box.box-7 {
     grid-column: 1 / 2;
-    grid-row: 4 / 5;
-    min-height: 300px;
-    background-color: rgba(18, 37, 85, 0.12); /* Fourth row - lighter */
+    grid-row: 4 / 6; /* Tall - spans 2 rows */
+    min-height: 540px;
+    background-color: rgba(1, 27, 49, 0.32); /* Fourth row - less transparent */
 }
 
 .spotlight-box.box-8 {
     grid-column: 2 / 3;
-    grid-row: 4 / 5;
-    min-height: 300px;
-    background-color: rgba(18, 37, 85, 0.12); /* Fourth row - lighter */
+    grid-row: 5 / 6;
+    min-height: 250px;
+    background-color: rgba(1, 27, 49, 0.32); /* Fourth row - less transparent */
 }
 
 .spotlight-box.box-9 {
-    grid-column: 1 / 2;
-    grid-row: 5 / 6;
-    min-height: 220px;
-    background-color: rgba(18, 37, 85, 0.10); /* Fifth row - even lighter */
+    grid-column: 3 / 4;
+    grid-row: 5 / 7; /* Tall - spans 2 rows */
+    min-height: 520px;
+    background-color: rgba(1, 27, 49, 0.30); /* Fifth row - less transparent */
 }
 
 .spotlight-box.box-10 {
-    grid-column: 2 / 4;
-    grid-row: 5 / 6;
-    min-height: 220px;
-    background-color: rgba(18, 37, 85, 0.10); /* Fifth row - even lighter */
+    grid-column: 1 / 3; /* Wide - spans 2 columns */
+    grid-row: 6 / 7;
+    min-height: 250px;
+    background-color: rgba(1, 27, 49, 0.30); /* Fifth row - less transparent */
 }
 
 .spotlight-box.box-11 {
-    grid-column: 1 / 3;
-    grid-row: 6 / 7;
-    min-height: 200px;
-    background-color: rgba(18, 37, 85, 0.08); /* Sixth row - lightest */
+    grid-column: 1 / 2;
+    grid-row: 7 / 8;
+    min-height: 240px;
+    background-color: rgba(1, 27, 49, 0.28); /* Sixth row - less transparent */
 }
 
 .spotlight-box.box-12 {
+    grid-column: 2 / 4; /* Wide - spans 2 columns */
+    grid-row: 7 / 8;
+    min-height: 240px;
+    background-color: rgba(1, 27, 49, 0.28); /* Sixth row - less transparent */
+}
+
+.spotlight-box.box-13 {
+    grid-column: 1 / 2;
+    grid-row: 8 / 10; /* Tall - spans 2 rows */
+    min-height: 500px;
+    background-color: rgba(1, 27, 49, 0.26); /* Seventh row - less transparent */
+}
+
+.spotlight-box.box-14 {
+    grid-column: 2 / 3;
+    grid-row: 8 / 9;
+    min-height: 240px;
+    background-color: rgba(1, 27, 49, 0.26); /* Seventh row - less transparent */
+}
+
+.spotlight-box.box-15 {
     grid-column: 3 / 4;
-    grid-row: 6 / 7;
-    min-height: 200px;
-    background-color: rgba(18, 37, 85, 0.08); /* Sixth row - lightest */
+    grid-row: 8 / 9;
+    min-height: 240px;
+    background-color: rgba(1, 27, 49, 0.26); /* Seventh row - less transparent */
+}
+
+
+
+/* Hide any remaining bottom boxes that might be cut off */
+.spotlight-box.box-16,
+.spotlight-box.box-17,
+.spotlight-box.box-18,
+.spotlight-box.box-19,
+.spotlight-box.box-20,
+.spotlight-box.box-21 {
+    display: none !important;
 }
 
 /* Bottom Content - Spotlight boxes */
@@ -468,7 +485,7 @@ a {
     font-weight: 500;
     font-size: 22px;
     line-height: 1.4;
-    color: black;
+    color: white;
     text-align: center;
     margin: 0;
 }
@@ -642,12 +659,38 @@ a {
 /* Footer */
 .site-footer {
     width: 100%;
-    background-color: #F5EDE0;
     padding: 40px 0;
     text-align: center;
     margin-top: auto;
     position: relative;
+    overflow: hidden; /* Ensure rotated background stays within bounds */
 }
+
+.site-footer::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300vw; /* Larger container to reduce scaling needs */
+    height: 300vh; /* Larger container to reduce scaling needs */
+    background-image: url('Background Images/background_image_1.png');
+    background-size: 80% auto; /* Zoomed out more for better quality while maintaining coverage */
+    background-position: bottom center; /* Show bottom section of image */
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%) rotate(90deg) scale(1.25) translateZ(0); /* Scale up to ensure full coverage */
+    transform-origin: center center;
+    will-change: transform; /* Optimize for transforms */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    image-rendering: -webkit-optimize-contrast; /* High quality rendering */
+    image-rendering: crisp-edges; /* Sharp edges */
+    -ms-interpolation-mode: bicubic; /* Better quality interpolation */
+    filter: contrast(1.05) brightness(1.02); /* Slight enhancement for clarity */
+    opacity: 0.6; /* Make image more translucent */
+    z-index: 0; /* Behind content */
+}
+
+/* Overlay removed - background image is fully opaque */
 
 .footer-divider {
     position: absolute;
@@ -655,6 +698,7 @@ a {
     left: 60px;
     right: 60px;
     height: 2.4px;
+    z-index: 2; /* Above overlay */
 }
 
 .footer-divider::before {
@@ -664,7 +708,7 @@ a {
     left: 0;
     width: 100%;
     height: 1.2px;
-    background-color: rgba(18, 37, 85, 0.9);
+    background-color: rgba(1, 27, 49, 0.9);
     border-radius: 2px;
 }
 
@@ -672,6 +716,8 @@ a {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: #122555;
+    color: #F5EDE0; /* Same color as header text */
     margin: 0;
+    position: relative;
+    z-index: 2; /* Above overlay */
 }
