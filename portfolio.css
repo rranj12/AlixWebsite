@@ -11,7 +11,7 @@ html {
 
 body {
     font-family: 'IBM Plex Sans', sans-serif;
-    background-color: #F5EDE0;
+    background-color: #FCF7F0;
     color: #000000;
     overflow-x: hidden;
     display: flex;
@@ -27,7 +27,7 @@ a {
 .portfolio {
     position: relative;
     width: 100%;
-    background-color: #F5EDE0;
+    background-color: #FCF7F0;
     flex: 1;
     min-height: 2800px;
 }
@@ -39,30 +39,11 @@ a {
     height: 100px;
     z-index: 100;
     overflow: hidden; /* Ensure rotated background stays within bounds */
+    background-color: #3757c4;
 }
 
 .header-bar::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300vw; /* Larger container to reduce scaling needs */
-    height: 300vh; /* Larger container to reduce scaling needs */
-    background-image: url('Background Images/background_image_1.png');
-    background-size: 80% auto; /* Zoomed out more for better quality while maintaining coverage */
-    background-position: 50% 60%; /* Position to show darker section with more dark blue */
-    background-repeat: no-repeat;
-    transform: translate(-50%, -50%) rotate(90deg) scale(1.25) translateZ(0); /* Scale up to ensure full coverage */
-    transform-origin: center center;
-    will-change: transform; /* Optimize for transforms */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    image-rendering: -webkit-optimize-contrast; /* High quality rendering */
-    image-rendering: crisp-edges; /* Sharp edges */
-    -ms-interpolation-mode: bicubic; /* Better quality interpolation */
-    filter: contrast(1.05) brightness(1.02); /* Slight enhancement for clarity */
-    opacity: 0.6; /* Make image more translucent */
-    z-index: 0; /* Behind content */
+    display: none; /* Hide background image when using solid color background */
 }
 
 /* Logo */
@@ -78,7 +59,7 @@ a {
     top: 5px;
     width: 136px;
     height: 89px;
-    color: #F5EDE0;
+    color: #FCF7F0;
     text-align: center;
     white-space: pre-wrap;
     margin: 0;
@@ -87,10 +68,6 @@ a {
     transition: opacity 0.3s ease;
     border: none;
     outline: none;
-    /* Dark blue border like hero text */
-    -webkit-text-stroke: 1.5px #011b31;
-    text-stroke: 1.5px #011b31;
-    paint-order: stroke fill;
 }
 
 .logo:hover,
@@ -98,7 +75,7 @@ a {
 .logo:focus,
 .logo:active {
     text-decoration: none !important;
-    color: #F5EDE0;
+    color: #FCF7F0;
     opacity: 0.8;
 }
 
@@ -130,6 +107,8 @@ a {
     top: 26px;
     left: 0;
     right: 0;
+    height: 49px; /* Ensure it doesn't go past the line at 75px */
+    overflow: hidden;
 }
 
 .nav-item {
@@ -138,15 +117,11 @@ a {
     font-size: 20px;
     font-weight: 400;
     line-height: normal;
-    color: #F5EDE0;
+    color: #FCF7F0;
     margin: 0;
     cursor: pointer;
     transition: opacity 0.3s ease;
     text-decoration: none;
-    /* Dark blue border like hero text */
-    -webkit-text-stroke: 1.5px #011b31;
-    text-stroke: 1.5px #011b31;
-    paint-order: stroke fill;
 }
 
 .nav-item:hover {
@@ -160,7 +135,7 @@ a {
 .nav-approach {
     left: 60px;
     width: 186px;
-    height: 51px;
+    height: 30px;
 }
 
 .nav-portfolio {
@@ -256,7 +231,7 @@ a {
     top: 100%;
     left: 0;
     margin-top: 8px;
-    background: #F5EDE0;
+    background: #FCF7F0;
     border: 1px solid #bfbfbf;
     border-radius: 4px;
     min-width: 150px;
@@ -498,49 +473,144 @@ a {
 /* Footer */
 .site-footer {
     width: 100%;
-    padding: 40px 0;
-    text-align: center;
+    padding: 60px 60px 30px;
     margin-top: auto;
     position: relative;
-    z-index: 10;
-    clear: both;
-    overflow: hidden; /* Ensure rotated background stays within bounds */
+    background: linear-gradient(180deg, #3757c4 0%, #3757c4 85%, rgba(55, 87, 196, 0.95) 100%);
+    background-color: #3757c4;
 }
 
-.site-footer::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300vw; /* Larger container to reduce scaling needs */
-    height: 300vh; /* Larger container to reduce scaling needs */
-    background-image: url('Background Images/background_image_1.png');
-    background-size: 80% auto; /* Zoomed out more for better quality while maintaining coverage */
-    background-position: bottom center; /* Show bottom section of image */
-    background-repeat: no-repeat;
-    transform: translate(-50%, -50%) rotate(90deg) scale(1.25) translateZ(0); /* Scale up to ensure full coverage */
-    transform-origin: center center;
-    will-change: transform; /* Optimize for transforms */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    image-rendering: -webkit-optimize-contrast; /* High quality rendering */
-    image-rendering: crisp-edges; /* Sharp edges */
-    -ms-interpolation-mode: bicubic; /* Better quality interpolation */
-    filter: contrast(1.05) brightness(1.02); /* Slight enhancement for clarity */
-    opacity: 0.6; /* Make image more translucent */
-    z-index: 0; /* Behind content */
+.footer-content {
+    display: flex;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 1;
 }
 
-.footer-divider {
-    display: none; /* Footer divider line removed */
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.footer-text {
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #FCF7F0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px;
+    flex: 1;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-heading {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(252, 247, 240, 0.7);
+    margin: 0 0 20px 0;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links li {
+    margin: 0;
+}
+
+.footer-links a {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: #F5EDE0; /* Cream color matching landing page background */
-    margin: 0;
+    color: #FCF7F0;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 0.7;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(252, 247, 240, 0.2);
+    padding-top: 30px;
+    text-align: center;
     position: relative;
-    z-index: 2; /* Above overlay */
+    z-index: 1;
+}
+
+.footer-copyright {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(252, 247, 240, 0.8);
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    .footer-columns {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+    
+    .footer-content {
+        gap: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 40px 30px 20px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .footer-social {
+        flex-direction: row;
+    }
+    
+    .footer-columns {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-columns {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 }
