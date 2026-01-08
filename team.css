@@ -309,8 +309,8 @@ a {
     justify-content: flex-start;
     padding: 24px;
     border-radius: 6px;
-    background-color: #9DB5F5;
-    color: #FCF7F0;
+    background-color: #FCF7F0;
+    color: #000000;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     width: 100%;
     max-width: 100%;
@@ -319,7 +319,7 @@ a {
 }
 
 .card-front {
-    color: #FCF7F0;
+    color: #000000;
     justify-content: flex-start;
 }
 
@@ -344,7 +344,7 @@ a {
     justify-content: center;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 18px;
-    color: #FCF7F0;
+    color: #000000;
     margin-bottom: 24px;
 }
 
@@ -352,7 +352,7 @@ a {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 24px;
     font-weight: 600;
-    color: #FCF7F0;
+    color: #000000;
     margin-bottom: 8px;
     margin-top: 0;
     text-align: center;
@@ -361,12 +361,12 @@ a {
 .role {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 18px;
-    color: #FCF7F0;
+    color: #000000;
     text-align: center;
 }
 
 .card-back {
-    color: #FCF7F0;
+    color: #000000;
     transform: rotateY(180deg);
     justify-content: flex-start;
     text-align: left;
@@ -376,7 +376,7 @@ a {
 .card-back h3 {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 24px;
-    color: #FCF7F0;
+    color: #000000;
     margin-bottom: 8px;
 }
 
@@ -384,7 +384,7 @@ a {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 18px;
     line-height: 1.5;
-    color: #FCF7F0;
+    color: #000000;
 }
 
 @media (max-width: 900px) {
