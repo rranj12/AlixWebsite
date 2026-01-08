@@ -286,7 +286,7 @@ a {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-color: #8B5CF6;
+    background-color: #9DB5F5;
     transition: all 0.3s ease;
     flex-shrink: 0;
 }
@@ -334,7 +334,7 @@ a {
     right: 60px; /* Slightly wider than boxes (boxes are at 80px) */
     bottom: 240px; /* End above footer with space for rounded corners */
     z-index: 1; /* Above particle canvas (z-index: 0) but behind boxes (z-index: 2) */
-    background-color: #0a2d4a; /* Slightly lighter dark blue, matching hero text */
+    background-color: #9DB5F5; /* Matching team page card background color */
     border-radius: 20px 20px 20px 20px; /* Explicitly rounded corners on all sides */
     clip-path: inset(0 round 20px); /* Ensure all corners are rounded, including bottom */
     opacity: 0;
@@ -344,7 +344,7 @@ a {
 }
 
 .scroll-background-image.visible {
-    opacity: 0.6; /* Translucent dark blue, matching header/footer */
+    opacity: 1; /* Fully visible to match team page card color */
 }
 
 
@@ -544,7 +544,11 @@ a {
     grid-column: 1 / 2;
     grid-row: 4 / 6; /* Tall - spans 2 rows */
     min-height: 540px;
-    background-color: rgba(1, 27, 49, 0.32); /* Fourth row - less transparent */
+    background-image: url('background_image_8.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(1, 27, 49, 0.32); /* Fallback color */
 }
 
 .spotlight-box.box-8 {
