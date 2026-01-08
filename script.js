@@ -14,7 +14,7 @@ class FlowingPointCloud {
         
         // Animation parameters
         this.time = 0;
-        this.waveSpeed = 0.004; // Slower animation speed
+        this.waveSpeed = 0.0032; // Slower animation speed (20% slower)
         
         // Mouse interaction
         this.mouseX = null;

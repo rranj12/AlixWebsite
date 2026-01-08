@@ -1,0 +1,17 @@
+# Team images - these are stored locally and not committed to the repo
+team-images/
+
+# Common OS and editor files
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Node modules (if any)
+node_modules/
+
+# Logs
+*.log
+
